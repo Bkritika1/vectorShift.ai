@@ -1,70 +1,258 @@
-# Getting Started with Create React App
+# 🚀 VectorShift Frontend Technical Assessment – Pipeline Builder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains a **node-based visual pipeline builder** built as part of the **VectorShift Frontend Technical Assessment**. The project is divided into a **React-based frontend** and a **FastAPI-based backend**, allowing users to visually create pipelines, connect nodes, and validate the pipeline structure via backend analysis.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🧩 Project Overview
 
-### `npm start`
+The application allows users to:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Drag and drop different types of nodes
+* Connect nodes using edges
+* Build a pipeline visually (similar to VectorShift UI)
+* Submit the pipeline to a backend
+* Receive validation results such as:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  * Total number of nodes
+  * Total number of edges
+  * Whether the pipeline forms a **Directed Acyclic Graph (DAG)**
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📂 Folder Structure
 
-### `npm run build`
+```
+frontend-20260109T100541Z-1-001/
+│
+├── backend/
+│   └── main.py                # FastAPI backend logic
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── canvas/
+│   │   │   ├── PipelineUI.jsx      # Main React Flow canvas
+│   │   │   └── PipelineUI.css
+│   │   │
+│   │   ├── components/
+│   │   │   ├── SubmitButton.jsx    # Submits pipeline to backend
+│   │   │   └── SubmitButton.css
+│   │   │
+│   │   ├── nodes/                  # All node definitions
+│   │   │   ├── BaseNode.jsx         # Core reusable node abstraction
+│   │   │   ├── BaseNode.css
+│   │   │   ├── InputNode.jsx
+│   │   │   ├── OutputNode.jsx
+│   │   │   ├── TextNode.jsx
+│   │   │   ├── MathNode.jsx
+│   │   │   ├── TransformNode.jsx
+│   │   │   ├── ConditionalNode.jsx
+│   │   │   ├── FilterNode.jsx
+│   │   │   ├── TimerNode.jsx
+│   │   │   └── LLMNode.jsx
+│   │   │
+│   │   ├── store/
+│   │   │   └── store.js            # Central state for nodes & edges
+│   │   │
+│   │   ├── toolbar/
+│   │   │   ├── PipelineToolbar.jsx # Toolbar with draggable nodes
+│   │   │   └── DraggableNode.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── index.js
+│   │   └── index.css
+│   │
+│   ├── package.json
+│   └── README.md
+│
+└── README.md
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧠 Key Features & Design Decisions
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1️⃣ Base Node Abstraction
 
-### `npm run eject`
+All nodes are built using a **single reusable `BaseNode` component**. This abstraction:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Eliminates repeated code
+* Ensures consistent UI & behavior
+* Makes it extremely easy to add new nodes
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Creating a new node requires only minimal configuration (inputs, outputs, content).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2️⃣ Clean Styling Architecture
 
-## Learn More
+* JSX and CSS are **strictly separated**
+* Each node has its own `.css` file
+* Unified dark theme inspired by modern pipeline tools
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3️⃣ Text Node Enhancements
 
-### Code Splitting
+The Text Node supports:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Auto-resizing width & height based on user input
+* Dynamic variable detection using `{{variableName}}`
+* Automatic creation of input handles for each variable
 
-### Analyzing the Bundle Size
+This mimics real VectorShift Text node behavior.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### 4️⃣ Math Node
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The Math Node supports basic operations:
 
-### Advanced Configuration
+* Add
+* Subtract
+* Multiply
+* Divide
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+It has two inputs and one output. The structure is execution-ready and can be extended to fully compute results across pipelines.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔗 Backend (FastAPI)
 
-### `npm run build` fails to minify
+### Backend Responsibilities
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The backend:
+
+* Receives pipeline data from frontend
+* Counts total nodes and edges
+* Validates whether the pipeline is a DAG
+* Handles all edge cases safely
+
+### API Endpoint
+
+```
+POST /pipelines/parse
+```
+
+### Response Format
+
+```json
+{
+  "num_nodes": 5,
+  "num_edges": 4,
+  "is_dag": true
+}
+```
+
+### DAG Validation Logic
+
+* Builds a graph using node IDs and edges
+* Uses DFS to detect cycles
+* Returns `false` if a cycle is found
+
+Example of non-DAG:
+
+```
+A → B → C → A
+```
+
+---
+
+## 🖱️ Frontend ↔ Backend Interaction
+
+The **Submit Button**:
+
+1. Collects all nodes from store
+2. Collects all edges
+3. Sends them to backend via POST request
+4. Displays a user-friendly alert with results
+
+---
+
+## ▶️ How to Run the Project
+
+### 🔧 Backend Setup
+
+```bash
+cd backend
+pip install fastapi uvicorn
+uvicorn main:app --reload
+```
+
+Backend runs on:
+
+```
+http://localhost:8000
+```
+
+---
+
+### 🎨 Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Frontend runs on:
+
+```
+http://localhost:3000
+```
+
+---
+
+
+## ▶️ How to Run the Project Locally
+
+### 🔹 Clone the Repository
+```bash
+git clone https://github.com/<your-github-username>/<repo-name>.git
+cd <repo-name>
+
+
+
+## 🧪 Testing DAG Validation
+
+### Valid DAG
+
+```
+Input → Math → Output
+```
+
+Result:
+
+```
+Is DAG: Yes ✅
+```
+
+### Invalid DAG (Cycle)
+
+```
+A → B → A
+```
+
+Result:
+
+```
+Is DAG: No ❌
+```
+
+---
+
+## ✅ Assessment Requirements – Completed
+
+✔ Node abstraction implemented
+✔ 5+ new nodes added
+✔ Clean and unified styling
+✔ Auto-resizing Text Node
+✔ Dynamic variable handles
+✔ Backend integration
+✔ DAG validation
+✔ User-friendly result display
+
+
+
+✨ **Thank you for reviewing!**
