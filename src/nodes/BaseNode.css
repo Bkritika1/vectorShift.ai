@@ -1,0 +1,137 @@
+.base-node {
+  width: 240px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  color: #e5e7eb;
+  font-size: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.base-node__header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #1e293b;
+  font-weight: 600;
+}
+
+.base-node__body {
+  padding: 15px;
+}
+
+.base-node__handle {
+  border: none;
+}
+
+/* .base-node__handle--input {
+  background: #bcbcbc;
+}
+
+.base-node__handle--output {
+  background: #22c55e;
+} */
+/* .react-flow__handle.base-node__handle--input {
+  background: #bcbcbc !important;
+}
+
+.react-flow__handle.base-node__handle--output {
+  background: #22c55e !important;
+} */
+
+.react-flow__handle.base-node__handle.base-node__handle--input {
+  background: #bcbcbc;
+}
+
+.react-flow__handle.base-node__handle.base-node__handle--output {
+  background: #22c55e;
+}
+
+.node {
+  min-width: 220px;
+  background: linear-gradient(180deg, #6b21a8, #3b0764);
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px #ffffff22,
+    0 20px 40px #00000088;
+  color: white;
+  font-family: Inter, sans-serif;
+}
+
+.node-header {
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid #ffffff22;
+}
+
+.node-sub {
+  padding: 8px 14px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.node-body {
+  padding: 12px;
+}
+
+.node-body button {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  background: #7c3aed;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+
+.base-node {
+  min-width: 220px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #6b21a8, #3b0764);
+  color: #fff;
+
+  box-shadow:
+    0 0 0 1px #ffffff22,
+    0 25px 50px #00000099;
+
+  font-family: Inter, system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* HEADER */
+.base-node__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+
+  background: linear-gradient(180deg, #7c3aed, #5b21b6);
+  border-bottom: 1px solid #ffffff22;
+}
+
+/* BODY */
+.base-node__body {
+  padding: 12px 14px;
+  font-size: 13px;
+}
+
+/* HANDLE COMMON */
+.base-node__handle {
+  width: 10px;
+  height: 10px;
+  background: #c084fc;
+  border: 2px solid #1f0033;
+}
+
+.base-node__handle--input {
+  left: -6px;
+}
+
+.base-node__handle--output {
+  right: -6px;
+}

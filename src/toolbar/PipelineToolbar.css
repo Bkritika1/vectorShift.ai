@@ -1,0 +1,115 @@
+/* .pipeline-toolbar {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.pipeline-toolbar__container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  background-color: #475569;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.toolbar-node-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+ */
+
+
+ /* TOOLBAR WRAPPER */
+.pipeline-toolbar {
+  padding: 14px 0;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(
+    180deg,
+    #1e0033,
+    #12001f
+  );
+  border-bottom: 1px solid #ffffff1a;
+}
+
+/* TOOLBAR CONTAINER */
+.pipeline-toolbar__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+
+  padding: 16px 22px;
+  border-radius: 14px;
+
+  background:
+    linear-gradient(180deg, #312e81, #1e1b4b);
+
+  box-shadow:
+    0 0 0 1px #ffffff22,
+    0 20px 40px #000000aa;
+
+  backdrop-filter: blur(10px);
+}
+
+/* EACH DRAGGABLE NODE */
+.pipeline-toolbar__container > div {
+  padding: 10px 12px;
+  min-width: 70px;
+
+  border-radius: 12px;
+  cursor: grab;
+
+  background:
+    linear-gradient(180deg, #4f46e5, #4338ca);
+
+  box-shadow:
+    0 6px 16px #00000055,
+    inset 0 0 0 1px #ffffff22;
+
+  transition: all 0.25s ease;
+}
+
+/* HOVER EFFECT */
+.pipeline-toolbar__container > div:hover {
+  transform: translateY(-4px) scale(1.05);
+
+  background:
+    linear-gradient(180deg, #7c3aed, #5b21b6);
+
+  box-shadow:
+    0 12px 30px #000000cc,
+    0 0 25px #a855f7aa;
+}
+
+/* ACTIVE (DRAGGING) */
+.pipeline-toolbar__container > div:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+/* LABEL + ICON */
+.toolbar-node-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 12px;
+  font-weight: 500;
+  color: #ffffff;
+
+  text-shadow: 0 1px 2px #00000099;
+}
+
+/* ICON COLOR */
+.toolbar-node-label svg {
+  color: #e9d5ff;
+}

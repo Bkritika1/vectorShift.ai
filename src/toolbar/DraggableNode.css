@@ -1,0 +1,18 @@
+.draggable-node {
+  cursor: grab;
+  min-width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #1c2536;
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.draggable-node.dragging {
+  cursor: grabbing;
+  background-color: #334155;
+}

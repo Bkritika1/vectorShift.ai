@@ -1,0 +1,20 @@
+.text-node {
+  min-width: 240px;
+  max-width: 360px;
+}
+
+.text-node__textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: none;
+  /* padding: 6px; */
+  border-radius: 6px;
+ border: 1px solid #a855f7;
+box-shadow:
+  0 0 0 1px #7c3aed,
+  0 0 12px #9333ea66;
+background: linear-gradient(180deg, #2a0a52, #330c64);
+  color: #e5e7eb;
+  font-size: 12px;
+  line-height: 1.4;
+}

@@ -1,0 +1,8 @@
+/* PipelineUI.css */
+
+.pipeline-ui__canvas {
+  width: 100vw;
+  height: 70vh;
+  /* background: #020617; */
+}
+

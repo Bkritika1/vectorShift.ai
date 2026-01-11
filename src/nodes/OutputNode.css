@@ -1,0 +1,19 @@
+.output-node__label {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.output-node__input,
+.output-node__select {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+ border: 1px solid #a855f7;
+box-shadow:
+  0 0 0 1px #7c3aed,
+  0 0 12px #9333ea66;
+background: linear-gradient(180deg, #2a0a52, #330c64);
+  color: #e5e7eb;
+}
